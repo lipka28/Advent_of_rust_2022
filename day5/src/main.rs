@@ -70,7 +70,6 @@ fn apply_instructions_1(data: &mut Vec<VecDeque<String>>, instructions: &Vec<&st
 }
 
 fn apply_instructions_2(data: &mut Vec<VecDeque<String>>, instructions: &Vec<&str>) {
-    print!("DAta: {:?}\n", data);
     for instruction in instructions {
         let instruction_split = instruction.split(' ').collect::<Vec<&str>>();
         let amount = instruction_split[1].parse::<usize>().expect("Not an int");
@@ -90,8 +89,9 @@ fn apply_instructions_2(data: &mut Vec<VecDeque<String>>, instructions: &Vec<&st
 
 fn read_tops(data: &Vec<VecDeque<String>>) {
     for col in data {
-        print!(" {} ", col.back().expect("Empty"));
+        print!("{}", col.back().expect("Empty").replace(&['[',']'], ""));
     }
+    print!("\n");
 }
 
 fn main() -> Result<(), String> {
